@@ -1,0 +1,35 @@
+{% extends 'todo/layout.html' %}
+{% block body %}
+
+    <h1>Welcome {{ request.user.first_name }}</h1>
+
+    <ul>
+        <li>Username {{ request.user.username }}</li>
+        <li>Email: {{ request.user.email }}</li>
+    </ul>
+
+    {% for task in tasks %}
+            <li style="font-size: 30px;">{{ task.task }}</li>  
+    {% empty %}
+    <li style="font-size: 30px;">No task yet</li>
+    {% endfor %}
+
+    <h3>Add Task</h3>
+    <form action="{% url 'addtask' userid %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="task">
+        <input type="submit" value="Add Task">
+    </form>
+
+
+    <h3>Delete task</h3>
+    <form action="{% url 'deletetask' userid %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="task">
+        <input type="submit" value="Delete Task">
+    </form>
+    
+    <br>
+    <a href="{% url 'logout' %}">LogOut</a>
+
+{% endblock %}

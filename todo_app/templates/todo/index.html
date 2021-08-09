@@ -1,0 +1,12 @@
+{% extends 'todo/layout.html' %}
+{% block body %}
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+    <h1>Hello there! Welocme  to the page</h1>
+    <a href="{% url 'login' %}">Login</a>
+    <a href="#" style="text-decoration: none;">   </a>
+    <a href="{% url 'signup' %}">Create account</a>
+    <h6>*Note: This is a test site only. This webpage lets you create user and add a list of task.*
+         I haven't use css thats why this page looks awful.</h6>
+{% endblock %}
